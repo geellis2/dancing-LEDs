@@ -7,7 +7,7 @@ void parse_audio(char ** argv){
     
     int notFinished = 1;//haven't determined end conditions
     while(notFinished){
-        parse_frame(/*TODO:args*/);
+        parse_buffer(/*TODO:args*/);
         //wait for a second? make sure that parsing is synchronous.
     }
     close_device(device);
@@ -35,7 +35,7 @@ void parse_buffer(/*TODO:args*/){
     //TODO:free any memory.
     return;
 }
-char * open_device(/*TODO:args*/){
+char * open_device(char * device/*TODO:args*/){
     /*TODO: read from a file in /dev/dsp?
      * This link has a lot of useful references:
      * http://stackoverflow.com/questions/9781797/how-to-get-voice-in-raw-format-by-using-mic-in-linux
@@ -53,6 +53,32 @@ char * open_device(/*TODO:args*/){
       *         ii: interupt interval?
       *         iii: others...
       *     8) now you can use it?
-      *
+      */
+    snd_pcm_format_t = SND_PCM_FORMAT_16;   //sampling format
+    int rate = 44100;
+    int channels = 1;
+    snd_pcm_sframes_t buffer_size;
+    snd_pcm_sframes_t period_size;
+    snd_output_t *output = NULL;
+    
 
+    //declare more variables?
+ 
+   
 }
+
+int set_params(snd_pcm_t * handle, snd_pcm_hw_params_t *params /* more parameters?*/){
+    int err;
+    unsigned int rrate;
+    err = snd_pcm_hw_params_any(handle, params); 
+    //"Fill params with a full configuration space for a PCM."
+    if( err < 0)
+        {printf("bad configuration: %s\n", snd_strerror(err)); return err;}
+    
+    //can set: access, format, subformat, channels*, rate, export_buffer, period*,
+    //         buffer_time*, buffer_size*
+    //need to set: ???
+    //format similar to above if statement
+}
+
+
