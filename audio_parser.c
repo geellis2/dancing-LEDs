@@ -11,6 +11,7 @@ void parse_audio(char ** argv){
         //wait for a second? make sure that parsing is synchronous.
     }
     close_device(device);
+    
     //TODO:free any memory.
 }
 
