@@ -5,9 +5,14 @@
  */
 #ifndef __AUDIO_PARSER_H__
 #define __AUDIO_PARSER_H__
-
+//need some includes
+#include <stdin.h>
+#include <alsa/asoundlib.h>
 void parse_audio(char ** argv);
 
 
-void parse_second(/*args?*/);
+void parse_buffer(/*args?*/);
+
+
+void open_device(/*args?*/);
 
